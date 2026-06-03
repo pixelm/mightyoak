@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MightyOak Dev — Advisory for DIY founders</title>
+  <meta name="description" content="Mansi helps DIY founders pick and configure the right front-end tech for their ecommerce businesses. Short, affordable advisory calls from $25." />
+  <meta property="og:title" content="MightyOak Dev — Advisory for DIY founders" />
+  <meta property="og:description" content="Fast, unbiased clarity on the ecommerce tools you're stuck on. Short, affordable advisory calls from $25." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f7f4ec" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌳%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f7f4ec;
+      --bg-card: #ffffff;
+      --ink: #1a1814;
+      --ink-2: #5e5a52;
+      --ink-3: #918d83;
+      --accent: #2f4a2d;
+      --accent-soft: #4a6648;
+      --rule: #e0dccf;
+
+      --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 56px);
+    }
+
+    a { color: inherit; }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(247, 244, 236, 0.85);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+    .nav.scrolled { border-bottom-color: var(--rule); }
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 22px;
+      padding-bottom: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: -0.012em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand i { font-size: 21px; color: var(--accent); }
+    .brand em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--ink-2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+      letter-spacing: 0.005em;
+    }
+    .nav-links a {
+      color: var(--ink-2);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
+    }
+
+    /* HERO */
+    .hero {
+      padding: clamp(64px, 12vw, 140px) 0 clamp(56px, 9vw, 100px);
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--ink-3);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.028em;
+      color: var(--ink);
+      max-width: 16ch;
+      margin-bottom: 28px;
+      font-variation-settings: "opsz" 96;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(17px, 1.6vw, 19px);
+      color: var(--ink-2);
+      max-width: 56ch;
+      line-height: 1.55;
+      margin-bottom: 40px;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: var(--ink);
+      color: var(--bg);
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.005em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    }
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn i {
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+    .btn:hover i { transform: translateX(3px); }
+
+    .price-tag {
+      font-size: 14px;
+      color: var(--ink-3);
+      font-family: var(--font-body);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: clamp(64px, 10vw, 110px) 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.875rem, 3.5vw, 2.625rem);
+      line-height: 1.1;
+      letter-spacing: -0.018em;
+      color: var(--ink);
+      max-width: 24ch;
+      margin-bottom: 20px;
+      font-variation-settings: "opsz" 60;
+    }
+    h2 em { font-style: italic; font-weight: 400; }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--ink-2);
+      max-width: 52ch;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    .avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 100%;
+      background: var(--accent);
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 100px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 90% 50%;
+      display: block;
+    }
+
+    .about-text p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--ink-2);
+      margin-bottom: 20px;
+      max-width: 60ch;
+    }
+    .about-text p:first-of-type {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 21px;
+      line-height: 1.45;
+      color: var(--ink);
+      margin-bottom: 24px;
+      letter-spacing: -0.005em;
+    }
+
+    .edge-list {
+      list-style: none;
+      margin-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+    .edge-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 16px;
+      color: var(--ink-2);
+      display: flex;
+      gap: 18px;
+      align-items: baseline;
+      line-height: 1.5;
+    }
+    .edge-list .num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent);
+      min-width: 24px;
+    }
+
+    /* QUESTIONS */
+    .questions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 640px) { .questions { grid-template-columns: 1fr; } }
+
+    .question {
+      padding: 32px 32px;
+      background: var(--bg-card);
+      border-radius: 14px;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1.35;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+
+    /* PRICING */
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 860px) {
+      .tiers { grid-template-columns: 1fr; }
+    }
+
+    .tier {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .tier:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px -20px rgba(26, 24, 20, 0.18);
+    }
+
+    .tier-roman {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--ink-3);
+      font-weight: 400;
+      margin-bottom: 26px;
+      letter-spacing: -0.015em;
+    }
+    .tier-name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.018em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .tier-meta {
+      font-size: 13px;
+      color: var(--ink-3);
+      margin-bottom: 22px;
+      letter-spacing: 0.02em;
+    }
+    .tier-price {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.022em;
+      margin-bottom: 28px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1;
+    }
+    .tier-list {
+      list-style: none;
+      margin-bottom: 30px;
+      flex: 1;
+    }
+    .tier-list li {
+      padding: 7px 0;
+      font-size: 15px;
+      color: var(--ink-2);
+      display: flex;
+      gap: 11px;
+      align-items: baseline;
+      line-height: 1.5;
+    }
+    .tier-list i {
+      color: var(--accent);
+      font-size: 13px;
+      flex-shrink: 0;
+      transform: translateY(1px);
+    }
+    .tier .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* REVIEWS */
+    .review {
+      padding: 44px 0;
+      border-bottom: 1px solid var(--rule);
+      max-width: 760px;
+    }
+    .review:last-child { border-bottom: none; }
+
+    .review-quote {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(19px, 1.9vw, 22px);
+      line-height: 1.5;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+      margin-bottom: 24px;
+    }
+    .review-quote::before {
+      content: '\201C';
+      font-style: italic;
+      font-size: 66px;
+      line-height: 0;
+      color: var(--accent);
+      margin-right: 10px;
+      vertical-align: -22px;
+      font-weight: 400;
+    }
+
+    .review-meta {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-size: 14px;
+      color: var(--ink-2);
+      padding-left: 52px;
+    }
+    .review-name {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .review-meta::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--ink-3);
+    }
+
+    /* FINAL CTA */
+    .cta-section {
+      text-align: center;
+      padding: clamp(80px, 12vw, 140px) 0;
+    }
+    .cta-section .eyebrow {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section h2 {
+      max-width: 22ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section .section-sub {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 40px;
+    }
+    .cta-section .cta-row { justify-content: center; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 56px 0 64px;
+      font-size: 14px;
+      color: var(--ink-3);
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -0.012em;
+    }
+    .footer-tag {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--ink-2);
+      margin-bottom: 16px;
+      font-size: 15px;
+      max-width: 32ch;
+      line-height: 1.5;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--ink-3);
+      letter-spacing: 0.01em;
+    }
+    .footer-right a {
+      color: var(--ink-2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .footer-right a:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    /* HERO ENTRY ANIMATION */
+    .hero > * {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+    .hero > *:nth-child(1) { animation-delay: 0.08s; }
+    .hero > *:nth-child(2) { animation-delay: 0.18s; }
+    .hero > *:nth-child(3) { animation-delay: 0.28s; }
+    .hero > *:nth-child(4) { animation-delay: 0.38s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero > * { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="container">
+      <a href="#top" class="brand">
+        <i class="ti ti-tree" aria-hidden="true"></i>
+        <span>MightyOak <em>Dev</em></span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <header class="container">
+      <div class="hero">
+        <div class="eyebrow">No-code advisory · DIY founders</div>
+        <h1>Building it yourself? Get <em>unstuck</em> in fifteen minutes.</h1>
+        <p class="hero-sub">I help DIY founders pick and configure the right front-end tech for their ecommerce businesses — without overengineering or expensive agencies. Fast, unbiased clarity, so you stop spinning on tools and start shipping.</p>
+        <div class="cta-row">
+          <a href="mailto:MightyOakDev@gmail.com?subject=Booking%20a%20session%20%E2%80%94%20Quick%20Help%20(%2425%2C%2015%20min)" class="btn">Book a session <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+          <span class="price-tag">$25 · 15-minute call</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <section id="about">
+        <div class="eyebrow">About</div>
+        <h2>I am <em>Mansi.</em></h2>
+
+        <div class="about-grid">
+          <div class="avatar" aria-label="Photo of Mansi">
+            <img src="mansi.jpg" alt="Mansi" width="200" height="200" />
+          </div>
+          <div class="about-text">
+            <p>Former business owner, product and people leader, analytics expert. I build businesses and systems with a deep understanding of human design and front-end technology.</p>
+            <p>Today, I specialize in helping founders and DIY entrepreneurs make smart, efficient decisions about their front-end tech. I know the tools. I understand the tradeoffs. And I help you cut through the noise quickly.</p>
+
+            <ul class="edge-list">
+              <li><span class="num">i.</span><span>Broad hands-on exposure to common ecommerce and no-code tools.</span></li>
+              <li><span class="num">ii.</span><span>Product manager brain — use case to tradeoffs to right setup.</span></li>
+              <li><span class="num">iii.</span><span>Short, affordable calls. Low commitment, high value.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="questions">
+        <div class="eyebrow">Sound familiar?</div>
+        <h2>You're in the right place if you're <em>asking</em>…</h2>
+        <p class="section-sub">If any of these are on your mind, a short call will save you days of spinning your wheels.</p>
+
+        <div class="questions">
+          <div class="question">"I'm building this myself but I'm stuck."</div>
+          <div class="question">"Shopify vs Squarespace vs Woo?"</div>
+          <div class="question">"How do I track conversions properly?"</div>
+          <div class="question">"What's the simplest setup that won't break later?"</div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="eyebrow">Three ways to work</div>
+        <h2>Pick what <em>fits</em> your stage.</h2>
+        <p class="section-sub">Most people start with Quick Help. Move up when the problem gets bigger.</p>
+
+        <div class="tiers">
+
+          <div class="tier">
+            <div class="tier-roman">i.</div>
+            <div class="tier-name">Quick Help</div>
+            <div class="tier-meta">15-minute call</div>
+            <div class="tier-price">$25</div>
+            <ul class="tier-list">
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>One focused problem</span></li>
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>Zoom screenshare session</span></li>
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>One clear next step</span></li>
+            </ul>
+            <a href="mailto:MightyOakDev@gmail.com?subject=Booking%20%E2%80%94%20Tier%201%20Quick%20Help" class="btn">Book Tier 1 <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="tier">
+            <div class="tier-roman">ii.</div>
+            <div class="tier-name">Deep Dive</div>
+            <div class="tier-meta">45-minute call</div>
+            <div class="tier-price">$75</div>
+            <ul class="tier-list">
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>Tool comparison</span></li>
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>Architecture walkthrough</span></li>
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>Setup recommendations</span></li>
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>Light roadmap</span></li>
+            </ul>
+            <a href="mailto:MightyOakDev@gmail.com?subject=Booking%20%E2%80%94%20Tier%202%20Deep%20Dive" class="btn">Book Tier 2 <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="tier">
+            <div class="tier-roman">iii.</div>
+            <div class="tier-name">Build-with-you</div>
+            <div class="tier-meta">Working session</div>
+            <div class="tier-price">$150 – $250</div>
+            <ul class="tier-list">
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>Stay on Zoom while you configure</span></li>
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>I guide, you click</span></li>
+              <li><i class="ti ti-arrow-narrow-right" aria-hidden="true"></i><span>Leave with it working</span></li>
+            </ul>
+            <a href="mailto:MightyOakDev@gmail.com?subject=Booking%20%E2%80%94%20Tier%203%20Build-with-you" class="btn">Book Tier 3 <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="eyebrow">What people are saying</div>
+        <h2>Real founders, <em>real outcomes.</em></h2>
+
+        <div class="review">
+          <p class="review-quote">I came to Mansi when my sister and I first decided to start this business and I didn't know how to set it up. As a baker, I didn't want something too clunky or with too many options — she helped me pick the right platforms to spin up my ecommerce site and start accepting orders as easily and directly as possible. Now I have autonomy over how I run and scale my business on my own terms, without worrying about too much overhead.</p>
+          <div class="review-meta"><span class="review-name">Saskia</span><span>baker and founder</span></div>
+        </div>
+
+        <div class="review">
+          <p class="review-quote">I spent hours on the phone with Square setting up my wholesale purchase flow and going in the wrong direction. A call with Mansi helped me create the right flow, and now I feel really good about my wholesale offering with the constraints I wanted — rather than having to compromise based on perceived tech limitations. She's great at understanding the problem and asking the right questions to simplify and clarify.</p>
+          <div class="review-meta"><span class="review-name">Kate</span><span>Nest and Bowl</span></div>
+        </div>
+
+        <div class="review">
+          <p class="review-quote">Mansi helped me set up my music coaching site with a Calendly integration. She's a great human-design thinker — she made sure I was set up for the highest conversions and lowest drop-off. I was about to pick a cheaper tool that required users to pay before they scheduled. She convinced me to pay a bit more for a stack where people select a session time first, then move into a seamless payment flow, which reduced the number of people leaving right before checkout.</p>
+          <div class="review-meta"><span class="review-name">Betsy</span><span>music coach</span></div>
+        </div>
+      </section>
+
+      <section class="cta-section" id="contact">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Get fast answers on the tools you're <em>stuck on.</em></h2>
+        <p class="section-sub">No generic tutorials. No one-size-fits-all answers. Just practical, product-led advice that fits your business now.</p>
+        <div class="cta-row">
+          <a href="mailto:MightyOakDev@gmail.com?subject=Booking%20a%20session" class="btn">Book a 15-minute call — $25 <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">MightyOak Dev</div>
+        <div class="footer-tag">Based in the serene oak tree forests near Austin, TX.</div>
+        <div class="footer-copy">© 2026 Completing the Cycle LLC. All rights reserved.</div>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:MightyOakDev@gmail.com">MightyOakDev@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        if (window.scrollY > 16) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>

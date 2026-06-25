@@ -16,6 +16,27 @@ Since you've already used GitHub Pages for past sites:
 
 All copy lives directly in `index.html`. Search for the section headers (`<!-- HERO -->`, `<!-- THE WALL -->`, etc.) to find what you want to change. Edit the text between tags. No build step — just save and push.
 
+## Customizing the logo row
+
+The "The Stack" section has 8 brand logos inlined as SVG (no external dependency). The current set:
+
+**Shopify · Meta · Google Ads · Google Analytics · Google Tag Manager · Looker · Hotjar · Stripe**
+
+To swap a logo, you'll need a single-color SVG of the brand. Best sources:
+- [Simple Icons](https://simpleicons.org) — open-source brand icons, browse and download
+- The brand's own press / media kit
+- Inline path data from logos you already have
+
+Each logo in the HTML follows this pattern:
+
+```html
+<svg class="logo-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="BRAND NAME" role="img">
+  <path fill="currentColor" d="...path data here..."/>
+</svg>
+```
+
+To add **Klaviyo**, **Recharge**, **Postscript**, or other ecommerce-specific brands not in Simple Icons, grab the SVG from the brand's press kit and inline it the same way. Make sure to set `fill="currentColor"` on the path so it picks up the site's ink color.
+
 ## Common edits you might want
 
 **Update Calendly link:** search for `calendly.com/mansip/45min` — appears in 3 places (header, hero CTA, closing CTA, footer).

@@ -1,6 +1,34 @@
 # Mansi — Product & Data Strategist
 
-Static single-page site, no build step. Three files: `index.html`, `mansi-hero.jpg`, `mansi-about.jpg`. Drop into any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages) and it works.
+Static multi-page site, no build step. Drop into any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages) and it works.
+
+## File structure
+
+```
+mansi-site/
+├── index.html                                  ← home page
+├── mansi-hero.jpg                              ← hero portrait
+├── mansi-about.jpg                             ← about portrait
+├── README.md
+└── writing/
+    ├── index.html                              ← writing list page
+    └── dont-trust-the-numbers/
+        └── index.html                          ← first essay
+```
+
+URLs after deployment:
+- `/` — home
+- `/writing/` — list of essays
+- `/writing/dont-trust-the-numbers/` — the first essay
+
+## Adding a new essay
+
+1. Create a new folder under `writing/`, e.g. `writing/new-essay-slug/`
+2. Copy `writing/dont-trust-the-numbers/index.html` into it as a starter template
+3. Update the title, meta tags, breadcrumb, date, reading time, and body content
+4. Add a new entry to `writing/index.html` — copy the existing `.essay-item` block, update title/date/excerpt, point the link to your new slug
+
+That's it. No build step.
 
 ## ⚠️ Photos are placeholders
 

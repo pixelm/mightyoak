@@ -1,66 +1,64 @@
-# MightyOak Dev Website
+# Mansi — Product & Data Strategist
 
-Single-page static site. Two files — `index.html` and `mansi.jpg` — that's it. No build step, no framework, no dependencies beyond Google Fonts (loaded from CDN).
+Static single-page site, no build step. Three files: `index.html`, `mansi-hero.jpg`, `mansi-about.jpg`. Drop into any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages) and it works.
+
+## ⚠️ Photos are placeholders
+
+The two photos currently in this folder (`mansi-hero.jpg` and `mansi-about.jpg`) are placeholders — both are the casual portrait from earlier, cropped to vertical. **You'll want to swap these in for your actual professional portraits from the Framer site** before going live.
+
+To swap: just replace those two files (keeping the same filenames). Aspect ratios used:
+- Hero photo: 3:4 portrait (tall vertical)
+- About photo: 4:5 portrait (slightly less tall)
+
+The actual image dimensions don't have to match exactly — `object-fit: cover` will handle the cropping automatically.
 
 ## Deploying to GitHub Pages
 
-Since you've already used GitHub Pages for past sites:
-
-1. Create a new repo (e.g. `mightyoak-dev` or use the existing `mightyoak` repo, replacing its contents)
-2. Drop `index.html` and `mansi.jpg` in the root
+1. Create a new repo (or use existing `mightyoak` repo)
+2. Drop all three files into the root
 3. Settings → Pages → Source: `main` branch, root folder
-4. Wait ~1 min for deploy
-5. Point your custom domain (mightyoak.dev or whatever) via Cloudflare DNS, same way you did mansi.cc
+4. ~1 min later it's live
+5. Point your custom domain through DNS
 
 ## Editing copy
 
-All copy lives directly in `index.html`. Search for the section headers (`<!-- HERO -->`, `<!-- THE WALL -->`, etc.) to find what you want to change. Edit the text between tags. No build step — just save and push.
+All copy lives directly in `index.html`. Search for the section comments (`<!-- HERO -->`, `<!-- THE WALL -->`, `<!-- HOW I HELP -->`, etc.) to find what you want to change.
 
-## Customizing the logo row
+## Common edits
 
-The "The Stack" section has 8 brand logos inlined as SVG (no external dependency). The current set:
+**Calendly link:** search for `calendly.com/mansip/45min` — appears in 3 places (hero button, investment button, footer).
 
-**Shopify · Meta · Google Ads · Google Analytics · Google Tag Manager · Looker · Hotjar · Stripe**
+**Pricing:** search for `$3,500` in the investment section.
 
-To swap a logo, you'll need a single-color SVG of the brand. Best sources:
-- [Simple Icons](https://simpleicons.org) — open-source brand icons, browse and download
-- The brand's own press / media kit
-- Inline path data from logos you already have
+**Stack list:** search for `class="brand"` to find the tool inventory. Add or remove `<span class="brand">Toolname</span>` lines. They wrap automatically.
 
-Each logo in the HTML follows this pattern:
+**Email:** search for `mansi@mightyoak.dev` in the footer.
 
-```html
-<svg class="logo-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="BRAND NAME" role="img">
-  <path fill="currentColor" d="...path data here..."/>
-</svg>
-```
+## Design notes
 
-To add **Klaviyo**, **Recharge**, **Postscript**, or other ecommerce-specific brands not in Simple Icons, grab the SVG from the brand's press kit and inline it the same way. Make sure to set `fill="currentColor"` on the path so it picks up the site's ink color.
+- **Color palette:** warm sand background (#F5EFE2), deep ink text, deep moss accent (#2E3C2A). Slightly elevated "what's the wall" and "how I help" sections in a more saturated warm tone.
+- **Typography:** Fraunces (display) + Inter (body) + JetBrains Mono (small labels), all loaded from Google Fonts.
+- **One editorial italic moment:** the word "systems" in the hero headline is set in Fraunces italic — the single moment of typographic personality in the hero.
+- **Two-column layouts:** hero (text left, photo right) and about (photo left, text right) — the asymmetric alternation gives the page visual rhythm.
+- **Responsive:** stacks to single column at 880px and below. Fully tested down to ~360px width.
 
-## Common edits you might want
+## Sections
 
-**Update Calendly link:** search for `calendly.com/mansip/45min` — appears in 3 places (header, hero CTA, closing CTA, footer).
-
-**Change pricing:** search for `1,200` in the pricing section. You'll also want to update mentions of "$1,200" anywhere else in the copy if you change it.
-
-**Swap photo:** replace `mansi.jpg` with a same-named file. Or change the `src` attribute on the `<img>` tag.
-
-**Update email:** search for `mansi@mightyoak.dev` in the footer.
-
-## Notes on the design
-
-- **Typography:** Fraunces (display) + Inter (body) + JetBrains Mono (small labels), all loaded from Google Fonts
-- **Color palette:** warm sand background (#F5EFE2), deep ink, deep moss accent (#2E3C2A)
-- **Editorial moment:** the "What I believe" section uses Fraunces for body text with a drop cap — intentional change of pace
-- **No JavaScript dependencies** except a tiny ~5-line scroll listener for the sticky header border
-- **Fully responsive** down to ~360px width
-- **Accessibility:** semantic HTML, visible focus outlines, respects `prefers-reduced-motion`
+1. **Header** — sticky, transparent until scroll
+2. **Hero** — two-column with portrait, eyebrow + Fraunces headline + lead + CTA
+3. **Stack banner** — typographic row of tools
+4. **The wall** — single full-bleed editorial section in Fraunces italic
+5. **How I Help** — 6-card grid (Product, Customer, Marketing, Finance, Merchandising, AI)
+6. **About** — two-column with second portrait
+7. **Working Together** — 4-card grid (Weekly Strategy, Slack, Decision Support, Contractor Bench)
+8. **Investment** — centered $3,500/month display + CTA
+9. **Footer** — minimal, with email and Calendly link
 
 ## Performance
 
-- ~24KB HTML (including all inline CSS)
-- ~230KB photo (already optimized to 1600px wide, JPEG 88% quality)
-- ~3 font files from Google Fonts CDN (cached aggressively)
-- No analytics, tracking pixels, or third-party scripts. Add GA4 / Plausible later if you want.
+- ~22KB HTML (all CSS inline)
+- ~450KB total with both photos (placeholders — your real photos may vary)
+- Google Fonts CDN (cached aggressively)
+- No JavaScript dependencies beyond a 5-line scroll listener for the sticky header border
 
-Total page weight under 300KB. Should load instantly on any connection.
+Total page weight under 500KB. Loads instantly.

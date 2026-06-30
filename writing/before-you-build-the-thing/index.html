@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Before you build the thing — Mansi</title>
+  <meta name="description" content="What I learned at Recharge from watching one new hire turn fog into a conclusion — and why, when I work with founders now, I look for the person who can carry the question." />
+  <meta property="og:title" content="Before you build the thing" />
+  <meta property="og:description" content="What I learned at Recharge from watching one new hire turn fog into a conclusion — and why, when I work with founders now, I look for the person who can carry the question." />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mansi" />
+  <meta property="article:published_time" content="2026-06-30" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..800,30..100&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F5EFE2;
+      --bg-elevated: #FBF7EB;
+      --bg-warm: #EFE6D2;
+      --ink: #1F1812;
+      --ink-2: #4A3F33;
+      --ink-3: #8A7E6E;
+      --rule: #D6CCB6;
+      --accent: #2E3C2A;
+
+      --display: "Fraunces", Georgia, serif;
+      --body: "Inter", system-ui, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+
+      --container: 720px;
+      --container-wide: 1100px;
+      --prose: 640px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.65;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    @media (max-width: 600px) { body { font-size: 16px; } }
+
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.2s ease, color 0.2s ease;
+    }
+
+    a:hover { color: var(--accent); text-decoration-color: var(--ink); }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(245, 239, 226, 0.92);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    header.scrolled { border-bottom-color: var(--rule); }
+
+    .header-inner {
+      max-width: var(--container-wide);
+      margin: 0 auto;
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 9, "SOFT" 100;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .logo:hover { color: var(--accent); text-decoration: none; }
+
+    .logo-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-right: 9px;
+      vertical-align: middle;
+      margin-bottom: 3px;
+    }
+
+    nav { display: flex; gap: 28px; align-items: center; }
+
+    nav a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-2);
+      text-decoration: none;
+      letter-spacing: -0.005em;
+    }
+
+    nav a:hover { color: var(--accent); text-decoration: none; }
+
+    nav a.current { color: var(--ink); font-weight: 600; }
+
+    nav a.book-cta { color: var(--ink); }
+    nav a.book-cta::after { content: " →"; }
+
+    @media (max-width: 600px) {
+      nav { gap: 16px; }
+      nav a { font-size: 13px; }
+      nav a.about-link { display: none; }
+    }
+
+    /* ---------- ARTICLE ---------- */
+
+    .breadcrumb {
+      max-width: var(--prose);
+      margin: 0 auto;
+      padding: 56px 28px 0;
+    }
+
+    .breadcrumb a {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--ink-3);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--accent); text-decoration: none; }
+    .breadcrumb a::before { content: "← "; }
+
+    article {
+      max-width: var(--prose);
+      margin: 0 auto;
+      padding: 40px 28px 96px;
+    }
+
+    @media (max-width: 720px) {
+      .breadcrumb { padding-top: 32px; }
+      article { padding: 32px 28px 64px; }
+    }
+
+    .article-head {
+      margin-bottom: 56px;
+    }
+
+    .article-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 22px;
+      display: flex;
+      gap: 18px;
+    }
+
+    .article-meta .dot {
+      opacity: 0.5;
+    }
+
+    article h1 {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 144, "SOFT" 60;
+      font-weight: 600;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+    }
+
+    /* Body type — Fraunces for the longform reading feel */
+    .article-body {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 16, "SOFT" 40;
+      font-weight: 400;
+      font-size: 1.18rem;
+      line-height: 1.65;
+      color: var(--ink-2);
+      letter-spacing: -0.003em;
+    }
+
+    @media (max-width: 600px) {
+      .article-body { font-size: 1.1rem; line-height: 1.6; }
+    }
+
+    .article-body p {
+      margin-bottom: 28px;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body em {
+      font-style: italic;
+      font-variation-settings: "opsz" 16, "SOFT" 80;
+    }
+
+    .article-body strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* The boss's quote, treated as an epigraph */
+    .article-body .epigraph {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 90, "SOFT" 100;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 3.4vw, 2rem);
+      line-height: 1.25;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+      margin: 14px 0 40px;
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+      max-width: 24ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Italic inline phrases — slightly distinguished */
+    .article-body em:not(.no-style) {
+      color: var(--ink);
+    }
+
+    /* ---------- ARTICLE FOOTER / CTA ---------- */
+
+    .article-end {
+      max-width: var(--prose);
+      margin: 0 auto;
+      padding: 24px 28px 96px;
+    }
+
+    .article-end-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--ink-3);
+      margin: 0 auto 56px;
+    }
+
+    .article-cta {
+      background: var(--bg-warm);
+      border: 1px solid var(--rule);
+      padding: 40px 36px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .article-cta { padding: 32px 24px; }
+    }
+
+    .article-cta .eyebrow {
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .article-cta p {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 24;
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--ink-2);
+      max-width: 42ch;
+      margin: 0 auto 28px;
+      letter-spacing: -0.005em;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 13px 24px;
+      border-radius: 2px;
+      font-family: var(--body);
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--ink);
+      color: var(--bg);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .button .arrow { transition: transform 0.2s ease; display: inline-block; }
+    .button:hover .arrow { transform: translateX(3px); }
+
+    .more-writing {
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .more-writing a {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      text-decoration: none;
+    }
+
+    .more-writing a:hover { color: var(--accent); text-decoration: none; }
+    .more-writing a::after { content: " →"; }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 36px 0 44px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .footer-inner {
+      max-width: var(--container-wide);
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-3);
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner {
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;
+      }
+    }
+
+    .footer-inner a {
+      color: var(--ink-2);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-decoration-thickness: 1px;
+    }
+
+    .footer-inner a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 1px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header">
+    <div class="header-inner">
+      <a href="../../" class="logo"><span class="logo-dot"></span>Mansi</a>
+      <nav>
+        <a href="../../#how-i-help">How I Help</a>
+        <a href="../../#about" class="about-link">About</a>
+        <a href="../" class="writing-link current" aria-current="true">Writing</a>
+        <a href="../../#investment" class="book-cta">Book Call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="breadcrumb">
+      <a href="../">Writing</a>
+    </div>
+
+    <article>
+
+      <header class="article-head">
+        <div class="article-meta">
+          <span>June 2026</span>
+          <span class="dot">·</span>
+          <span>4 min read</span>
+        </div>
+        <h1>Before you build the thing.</h1>
+      </header>
+
+      <div class="article-body">
+
+        <p>At Recharge, we were trying to assess whether a measurement and attribution product for our customers would be the next big thing we built. There was demand. The vendor space was crowded. Every team had a strategy deck — business development, engineering, product — and everyone was vouching for it. But something was missing that was keeping us from going all in.</p>
+
+        <p>There was still fog.</p>
+
+        <p>We asked a new hire to help us decide. She was a former exec from a UK-based brand, hired to lead a new markets initiative, and we thought this would be a good way for her to get to know the teams. She agreed. The way she did it was something to see.</p>
+
+        <p>Her first move was to enroll an executive sponsor — formally, in writing, on the calendar. It was an advisory role. She needed their name. With it, she could walk into any team at Recharge and ask hard questions without having to earn that right one meeting at a time.</p>
+
+        <p>Then she started asking. She talked to every department that touched the problem — engineering, customer success, finance, sales, strategy. She asked the questions most decisions inside companies politely skip. What does this technology actually do under the hood? What does it actually cost — to build, to hire around, to restructure the org for, to maintain, to scale, to market? And what aren't we building because we built this instead? What does a "good insight" look like to a customer who's measuring attribution? What does it mean when the numbers point to growth, and what does it mean when they point to regression? Where do other vendors quietly fail? What would make this thing real?</p>
+
+        <p>What she gave back to people was concise. No jargon, no extra verbiage, no hundred-page decks. But what she kept for herself was a very elaborate spreadsheet that mapped the whole organization — every team, their objections on paper, what she perceived their real objections were, the SWOT she'd assembled just from watching how people talked.</p>
+
+        <p>She kept asking until the answers turned into a model. A map of the territory accurate enough to walk through in her head.</p>
+
+        <p>Then she did the same thing externally. She talked to a hundred of our customers, not to sell them anything — there was nothing to sell — but to test the model. What would they do with it? What would it replace? What were they already paying for? What were they currently confused about? Would they actually buy it, or would they nod politely and then not?</p>
+
+        <p>When she finally came back with her answer, there was nothing left to debate. She had already debated it with herself, against every objection any of us would have raised, in a hundred different conversations. The decision wasn't a meeting. It was a recommendation that had survived every test someone might have thrown at it before any of us got the chance.</p>
+
+        <p>And by then, every team was already aligned. Her conversations had been bidirectional all along — she wasn't just gathering information in those meetings, she was sharing it back. Each team got to see what the others were thinking, what the real objections were, what the customers were saying. By the end, everyone was talking about the project in the same language.</p>
+
+        <p>We had a waiting list of brands wanting to buy it before we'd written a line of code. And more importantly, the executives were calm about the decision. They knew exactly how much firepower they were being asked to commit, they'd had time to sit with it, and they had come to peace with the bet before it was placed.</p>
+
+        <p>Of all the products we launched at Recharge, this was one of the most carefully thought-out — and the reason was the person who carried the question. We trusted her, even though she was new, because of how she let herself be seen working: her ideas, her convictions, the way she was clearly working on herself as a thinker, a subject-matter expert, the voice of reason on this particular question. That work happened in public. We could see it. That was the trust.</p>
+
+        <p>This kind of work is rare. What's usually missing is the person who carries the question. Not the project manager. Not the analyst. The person whose actual job is to be the voice of reason — who has talked to everyone, modeled every objection, and can stand in front of the leadership team with a recommendation that has already been tested against a hundred internal arguments.</p>
+
+        <p>I think about this often when I work with founders. The temptation, when a big call has to be made, is either to decide quickly from gut or to convene a meeting and hope the right answer surfaces. What almost no one does is slow down enough to put one person on the question, give them the standing to ask everyone, and let them carry it until the answer is real.</p>
+
+        <p>That's not consulting work. It's not even strategy work, exactly. It's the discipline of building a simulation in someone's head until the decision is no longer a decision — it's a conclusion.</p>
+
+        <p>Run it on paper. Run it through your team. Run it past your customers. Then build the thing.</p>
+
+      </div>
+
+    </article>
+
+    <div class="article-end">
+
+      <div class="article-end-rule"></div>
+
+      <div class="article-cta">
+        <span class="eyebrow">Working together</span>
+        <p>If you're a founder-led ecommerce brand and there's a decision you're trying to get right, I'd love to talk.</p>
+        <a href="https://calendly.com/mansip/45min" class="button" target="_blank" rel="noopener">
+          Book a discovery call <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="more-writing">
+        <a href="../">More writing</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Mansi · Product & Data Strategist</span>
+      <span>
+        <a href="mailto:mansip84@gmail.com">mansip84@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://calendly.com/mansip/45min" target="_blank" rel="noopener">Calendly</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    function onScroll() {
+      if (window.scrollY > 8) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+
+</body>
+</html>

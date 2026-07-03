@@ -240,27 +240,16 @@
 
     /* ---------- HERO ---------- */
 
-    .hero { padding: 64px 0 88px; }
+    .hero { padding: 88px 0 96px; }
 
     @media (max-width: 720px) {
-      .hero { padding: 40px 0 64px; }
+      .hero { padding: 56px 0 72px; }
     }
 
-    .hero-grid {
-      max-width: var(--container-wide);
+    .hero-inner {
+      max-width: var(--container);
       margin: 0 auto;
       padding: 0 28px;
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    @media (max-width: 880px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
     }
 
     .hero-eyebrow {
@@ -276,29 +265,8 @@
     }
 
     .hero-sub {
-      max-width: 42ch;
+      max-width: 46ch;
       margin-bottom: 40px;
-    }
-
-    .hero-photo {
-      position: relative;
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: var(--bg-warm);
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    @media (max-width: 880px) {
-      .hero-photo {
-        max-width: 380px;
-        margin: 0 auto;
-      }
     }
 
     /* ---------- STACK BANNER ---------- */
@@ -430,6 +398,270 @@
       color: var(--ink-2);
       font-size: 0.98rem;
       line-height: 1.55;
+    }
+
+    /* ---------- WHAT YOU GET (why hire) ---------- */
+
+    .hire {
+      padding: 96px 0;
+    }
+
+    @media (max-width: 720px) {
+      .hire { padding: 64px 0; }
+    }
+
+    .hire .eyebrow {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .hire h2 {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 60, "SOFT" 80;
+      font-weight: 500;
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 64px;
+      max-width: 22ch;
+      color: var(--ink);
+    }
+
+    .hire-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px 64px;
+    }
+
+    @media (max-width: 720px) {
+      .hire-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .hire-item {
+      /* no border/bg — just typographic weight */
+    }
+
+    .hire-item h3 {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 30, "SOFT" 80;
+      font-weight: 500;
+      font-size: 1.25rem;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    .hire-item p {
+      color: var(--ink-2);
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    /* ---------- HOW I HELP (questions layout) ---------- */
+
+    /* .how base styles stay; refine grid and add question-list treatment */
+
+    .how h2 {
+      margin-bottom: 56px;
+    }
+
+    .questions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 44px 56px;
+    }
+
+    @media (max-width: 880px) {
+      .questions-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .questions-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .q-category {
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .q-category h3 {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 24, "SOFT" 80;
+      font-weight: 500;
+      font-size: 1.25rem;
+      letter-spacing: -0.015em;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    .q-category ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .q-category li {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 16, "SOFT" 80;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--ink-2);
+      letter-spacing: -0.003em;
+      margin-bottom: 10px;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .q-category li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 1px;
+      background: var(--ink-3);
+    }
+
+    .q-category li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- INVESTMENT (two cards) ---------- */
+
+    .investment-lead {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 24;
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--ink-2);
+      max-width: 46ch;
+      margin: 0 auto 56px;
+      letter-spacing: -0.005em;
+    }
+
+    .investment .invest-eyebrow-block {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .invest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto 24px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 720px) {
+      .invest-grid { grid-template-columns: 1fr; gap: 20px; margin-bottom: 20px; }
+    }
+
+    .invest-portrait {
+      overflow: hidden;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      aspect-ratio: 1 / 1;
+    }
+
+    .invest-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .invest-caption {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+      line-height: 1.5;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 44px;
+    }
+
+    @media (max-width: 720px) {
+      .invest-caption { font-size: 11px; margin-bottom: 32px; }
+    }
+
+    @media (max-width: 720px) {
+      .invest-grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+
+    .invest-card {
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      padding: 40px 36px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 720px) {
+      .invest-card { padding: 32px 26px 28px; }
+    }
+
+    .invest-card .card-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 20px;
+    }
+
+    .invest-card .card-anchor {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+      font-weight: 600;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .invest-card .card-anchor .per {
+      font-family: var(--body);
+      font-size: 0.22em;
+      letter-spacing: 0.04em;
+      color: var(--ink-3);
+      font-weight: 400;
+      vertical-align: 0.9em;
+      margin-left: 6px;
+      text-transform: lowercase;
+    }
+
+    .invest-card .card-anchor .suffix {
+      font-family: var(--display);
+      font-variation-settings: "opsz" 30, "SOFT" 80;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 0.28em;
+      color: var(--ink-2);
+      letter-spacing: -0.01em;
+      margin-left: 10px;
+      vertical-align: 0.55em;
+    }
+
+    .invest-card p {
+      color: var(--ink-2);
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin-top: 18px;
+    }
+
+    .invest-cta {
+      text-align: center;
     }
 
     /* ---------- ABOUT ---------- */
@@ -689,7 +921,7 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-grid">
+      <div class="hero-inner">
         <div class="hero-text">
           <div class="eyebrow hero-eyebrow">Product & Data Strategist</div>
           <h1 class="display">
@@ -701,9 +933,6 @@
           <a href="https://calendly.com/mansip/45min" class="button" target="_blank" rel="noopener">
             Book a discovery call <span class="arrow">→</span>
           </a>
-        </div>
-        <div class="hero-photo">
-          <img src="mansi-hero.jpg" alt="Portrait of Mansi" />
         </div>
       </div>
     </section>
@@ -734,37 +963,122 @@
       </div>
     </section>
 
+    <!-- WHY HIRE -->
+    <section class="hire">
+      <div class="container-wide">
+        <span class="eyebrow">What you actually get</span>
+        <h2>DTC brands hire a data product person to stop guessing and start knowing.</h2>
+
+        <div class="hire-grid">
+          <div class="hire-item">
+            <h3>Turn the pile of tools into one picture.</h3>
+            <p>Shopify says one thing, Klaviyo says another, GA4 says a third, Meta reports a fourth. You get all of them agreeing on what actually happened this week.</p>
+          </div>
+
+          <div class="hire-item">
+            <h3>Answer the LTV question honestly.</h3>
+            <p>Most founders have a number they use for LTV that they're a little embarrassed about. You get one you'd defend in a board meeting.</p>
+          </div>
+
+          <div class="hire-item">
+            <h3>Make subscription behavior legible.</h3>
+            <p>Cohort curves, churn drivers, tenure math, what causes a subscriber to cancel in month 2 versus month 8. Recharge and Skio data made real.</p>
+          </div>
+
+          <div class="hire-item">
+            <h3>Build the scorecard the whole leadership team reads the same way.</h3>
+            <p>So marketing and finance stop arguing about ROAS versus contribution margin — and start solving the same problem.</p>
+          </div>
+
+          <div class="hire-item">
+            <h3>Audit and rationalize the app stack.</h3>
+            <p>Most $3M–$10M brands are paying for three to five tools they don't need. Finding the leaks often pays for the engagement.</p>
+          </div>
+
+          <div class="hire-item">
+            <h3>Set up decision-making processes, not just dashboards.</h3>
+            <p>Teach the team to talk about numbers in a way that doesn't fragment across functions — so the same question gets the same answer no matter who's asking.</p>
+          </div>
+
+          <div class="hire-item">
+            <h3>Product prioritization tied to data.</h3>
+            <p>Which SKU deserves the marketing push. Which one is quietly cannibalizing another. Which one is dying. Merchandising decisions grounded in actual purchase behavior.</p>
+          </div>
+
+          <div class="hire-item">
+            <h3>Retention and lifecycle strategy.</h3>
+            <p>Not just the Klaviyo flows themselves, but which cohorts to target, when, with what offer — and how to measure whether it worked.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- HOW I HELP -->
     <section class="how" id="how-i-help">
       <div class="container-wide">
         <span class="eyebrow">How I Help</span>
-        <h2>Strategy across the systems founders rely on most.</h2>
+        <h2>Questions founders often ask at this stage of growth:</h2>
 
-        <div class="how-grid">
-          <div class="how-card">
+        <div class="questions-grid">
+
+          <div class="q-category">
             <h3>Product</h3>
-            <p>Roadmaps, requirements, prioritization, and the decisions that keep product work tied to growth.</p>
+            <ul>
+              <li>Which of our SKUs are actually paying for the rest of the catalog?</li>
+              <li>Should we launch this new product line, or does the data say we don't have room for it yet?</li>
+              <li>Why is our best-selling product also our worst repeat-purchase product?</li>
+              <li>Are we ready to move from a hero-product strategy to a multi-product strategy?</li>
+            </ul>
           </div>
-          <div class="how-card">
+
+          <div class="q-category">
             <h3>Customer</h3>
-            <p>Retention, lifecycle behavior, segmentation, and the moments that turn customers into repeat buyers.</p>
+            <ul>
+              <li>What's our real LTV — the one we'd defend to an investor, not the one we've been quoting?</li>
+              <li>Which cohort of customers is actually growing our business, and which one is quietly flat?</li>
+              <li>Are our repeat customers repeating because they love the product, or because we're bribing them with discounts?</li>
+              <li>Why did retention improve last quarter — was it something we did, or something in the mix?</li>
+            </ul>
           </div>
-          <div class="how-card">
+
+          <div class="q-category">
             <h3>Marketing</h3>
-            <p>Campaign systems, lifecycle automations, channel reporting, and clearer reads on what's actually working.</p>
+            <ul>
+              <li>Meta says our ROAS is 3x. Finance says we're losing money on new customers. Who's right?</li>
+              <li>Which channel is actually driving profitable growth, and which one is just taking credit for it?</li>
+              <li>Are we spending more on email because it's working, or because it's easy to measure?</li>
+              <li>If we cut paid spend by 30% next quarter, what would actually happen?</li>
+            </ul>
           </div>
-          <div class="how-card">
-            <h3>Finance</h3>
-            <p>Margin visibility, planning inputs, and decision models that connect growth goals to operating reality.</p>
-          </div>
-          <div class="how-card">
+
+          <div class="q-category">
             <h3>Merchandising</h3>
-            <p>Assortment logic, launch planning, inventory signals, and the commercial story behind the catalog.</p>
+            <ul>
+              <li>Which products deserve more inventory, and which ones are eating our cash?</li>
+              <li>Is our new-product launch cadence helping or fragmenting the catalog?</li>
+              <li>What's the real signal behind our slow-movers — bad product, bad merchandising, or bad timing?</li>
+            </ul>
           </div>
-          <div class="how-card">
+
+          <div class="q-category">
+            <h3>Finance</h3>
+            <ul>
+              <li>Where is margin actually leaking, and how much would it cost us to plug it?</li>
+              <li>Is our subscription business subsidizing the one-time business, or the other way around?</li>
+              <li>How much of our growth this year came from price increases we forgot we made?</li>
+              <li>What does it actually cost us to acquire a customer, once you count everything?</li>
+            </ul>
+          </div>
+
+          <div class="q-category">
             <h3>AI</h3>
-            <p>Practical AI workflows for analysis, documentation, customer insight, and internal operating leverage.</p>
+            <ul>
+              <li>Where should we be using AI right now, and where would it be a waste of six months?</li>
+              <li>Our team keeps asking for "AI features." Which of those is a real opportunity versus a distraction?</li>
+              <li>Could we automate our reporting layer without adding a dashboard that no one reads?</li>
+            </ul>
           </div>
+
         </div>
       </div>
     </section>
@@ -813,14 +1127,34 @@
 
     <!-- INVESTMENT -->
     <section class="investment" id="investment">
-      <div class="container">
-        <span class="eyebrow">Investment</span>
-        <div class="price-prefix">Starts at</div>
-        <div class="price">$3,500<span class="per">/ month</span></div>
-        <p>A monthly strategic partnership for founder-led Shopify brands ready to make better decisions, build stronger operating systems, and create more leverage across the business.</p>
-        <a href="https://calendly.com/mansip/45min" class="button" target="_blank" rel="noopener">
-          Book a discovery call <span class="arrow">→</span>
-        </a>
+      <div class="container-wide">
+        <div class="invest-eyebrow-block">
+          <span class="eyebrow">Engagement</span>
+        </div>
+        <h2 style="font-family: var(--display); font-variation-settings: 'opsz' 60, 'SOFT' 80; font-weight: 500; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em; text-align: center; margin-bottom: 20px;">Simple, transparent pricing.</h2>
+        <p class="investment-lead" style="text-align: center;">Retained monthly engagements with a three-month minimum commitment.</p>
+
+        <div class="invest-grid">
+
+          <div class="invest-portrait">
+            <img src="mansi-illustration.jpg" alt="Illustration of Mansi" />
+          </div>
+
+          <div class="invest-card">
+            <div class="card-eyebrow">Starts at</div>
+            <div class="card-anchor">$3,500<span class="per">/ month</span></div>
+            <p>Three-month minimum.</p>
+          </div>
+
+        </div>
+
+        <p class="invest-caption">Currently adding 2 more engagements for 2026.</p>
+
+        <div class="invest-cta">
+          <a href="https://calendly.com/mansip/45min" class="button" target="_blank" rel="noopener">
+            Book a discovery call <span class="arrow">→</span>
+          </a>
+        </div>
       </div>
     </section>
 
